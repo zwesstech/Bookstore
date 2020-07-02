@@ -33,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			"/js/**",
 			"/image/**",
 			"/",
-			"/myAccount"
+			"/newUser",
+			"/forgotPassword"
 	};
 	
 	protected void configure(HttpSecurity http) throws Exception {

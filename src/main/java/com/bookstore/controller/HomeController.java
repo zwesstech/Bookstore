@@ -3,10 +3,13 @@ package com.bookstore.controller;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,11 +27,18 @@ import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.service.UserService;
 import com.bookstore.service.impl.UserSecurityService;
+import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.SecurityUtility;
 
 @Controller
 public class HomeController {
-
+	
+	@Autowired
+	private JavaMailSender mailSender;
+	
+	@Autowired
+	private MailConstructor mailConstructor;
+	
 	@Autowired
 	private UserService userService;
 
@@ -86,7 +96,20 @@ public class HomeController {
 		Set<UserRole> userRoles = new HashSet<>();
 		userRoles.add(new UserRole(user, role));
 		userService.createUser(user, userRoles);
+		
+		String token = UUID.randomUUID().toString();
+		userService.createPasswordResetTokenForUser(user, token);
+		
+		String appUrl = "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
+		
+		SimpleMailMessage email = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user, password);
 
+		mailSender.send(email);
+		
+		model.addAttribute("emailSent", "true");
+		
+		return "myAccount";
+		
 	}
 
 	@RequestMapping("/newUser")
@@ -108,6 +131,8 @@ public class HomeController {
 				userDetails.getAuthorities());
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		model.addAttribute("user", user);
 
 		model.addAttribute("classActiveEdit", true);
 		return "myProfile";
