@@ -2,12 +2,11 @@ hr {
     border: none;
     height: 1px;
     /* Set the hr color */
-    color: #333; /* old IE */
     background-color: #333; /* Modern Browsers */
 }
 
-body {
-	/*margin-bottom: 50px;*/
+.container {
+	width: none;
 }
 
 .banner {
@@ -46,10 +45,6 @@ body {
 	padding:5px 22px;
 }
 
-.box {
-	border: 1px solid red;
-}
-
 footer { background-color:#0c1a1e; min-height:250px; font-family: 'Open Sans', sans-serif; }
 .footerleft { margin-top:50px; padding:0 36px; }
 .logofooter { margin-bottom:10px; font-size:25px; color:#fff; font-weight:700;}
@@ -78,4 +73,3 @@ footer { background-color:#0c1a1e; min-height:250px; font-family: 'Open Sans', s
  .bottom_ul li { float:left; line-height:40px;}
  .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
-
