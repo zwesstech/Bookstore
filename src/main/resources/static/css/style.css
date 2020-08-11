@@ -5,9 +5,6 @@ hr {
     background-color: #333; /* Modern Browsers */
 }
 
-.container {
-	width: none;
-}
 
 .banner {
 	background-image: url("../image/linebg.png");

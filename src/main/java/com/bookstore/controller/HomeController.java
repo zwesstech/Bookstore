@@ -86,7 +86,7 @@ public class HomeController {
 
 		mailSender.send(newEmail);
 		
-		model.addAttribute("forgetPasswordEmailSent", "true");
+		model.addAttribute("forgetPasswordEmailSent", true);
 		
 		return "myAccount";
 	}
