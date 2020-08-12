@@ -36,7 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			"/newUser",
 			"/forgetPassword",
 			"/login",
-			"/fonts/**"
+			"/fonts/**",
+			"/bookshelf"
 	};
 	
 	protected void configure(HttpSecurity http) throws Exception {
