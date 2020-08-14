@@ -1,5 +1,6 @@
 package com.bookstore.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +29,7 @@ public class Book {
 	private double ourPrice;
 	private boolean active = true;
 	
+	@Column(columnDefinition="text")
 	private String description;
 	private int inStockNumber;
 	
