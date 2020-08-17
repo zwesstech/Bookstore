@@ -221,6 +221,7 @@ public class HomeController {
 		model.addAttribute("user", user);
 		
 		model.addAttribute("addNewShippingAddress", true);
+		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("classActiveShipping", true);
 		
 		UserShipping userShipping = new UserShipping();
