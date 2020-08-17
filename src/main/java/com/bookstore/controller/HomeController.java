@@ -132,6 +132,27 @@ public class HomeController {
 		
 		return "myAccount";
 	}
+	
+	@RequestMapping("/myProfile")
+	public String myProfile(Model model, Principal principal) {
+		User user = userService.findByUsername(principal.getName());
+		model.addAttribute("user", user);
+		
+		UserShipping userShipping = new UserShipping();
+		model.addAttribute("userShipping", userShipping);
+		
+		model.addAttribute("listOfCreditCards", true);
+		model.addAttribute("listOfShippingAddresses", true);
+		
+		List<String> stateList = USConstants.listOfUSStateCode;
+		Collection.sort(stateList);
+		model.addAttribute("stateList", stateList);
+		model.addAttribute("classActiveEdit", true);
+		
+		return "myProfile";
+	}
+	
+	
 
 	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
 	public String newUserPost(HttpServletRequest request, @ModelAttribute("email") String userEmail,
