@@ -143,43 +143,46 @@
 												Credit Card</a></li>
 									</ol>
 
-									 <div th:if="${listOfCreditCards}">
-                                	<form th:action="@{/setDefaultPayment}" method="post">
-                                		<table class="table">
-                                			<thead>
-                                				<tr>
-                                					<th>Default</th>
-                                					<th>Credit Card</th>
-                                					<th>Operations</th>
-                                				</tr>
-                                			</thead>
-                                			<tbody>
-                                				<tr th:each="userPayment : ${userPaymentlist}">
-                                				<td>
-                                					<input type="radio" name="defaultUserPaymentId" th:value="${userPayment.id}" th:checked="${userPayment.defaultPayment}" />
-                                				</td>
-                                				<td th:text="${userPayment.cardName}"></td>
-                                				<td>
-                                					<a th:href="@{/updateCreditCard(id=${userPayment.id})}"><i class="fa fa-pencil"></i></a>
-                                					<a th:href="@{/removeCreditCard(id=${userPayment.id})}"><i class="fa fa-times"></i></a>
-                                				</td>
-                                				</tr>
-                                			</tbody>
-                                		</table>
-                                		<button class="btn btn-primary" type="submit">Save</button>
-                                	</form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end of container -->
+									<div th:if="${listOfCreditCards}">
+										<form th:action="@{/setDefaultPayment}" method="post">
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Default</th>
+														<th>Credit Card</th>
+														<th>Operations</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="userPayment : ${userPaymentlist}">
+														<td><input type="radio" name="defaultUserPaymentId"
+															th:value="${userPayment.id}"
+															th:checked="${userPayment.defaultPayment}" /></td>
+														<td th:text="${userPayment.cardName}"></td>
+														<td><a
+															th:href="@{/updateCreditCard(id=${userPayment.id})}"><i
+																class="fa fa-pencil"></i></a> <a
+															th:href="@{/removeCreditCard(id=${userPayment.id})}"><i
+																class="fa fa-times"></i></a></td>
+													</tr>
+												</tbody>
+											</table>
+											<button class="btn btn-primary" type="submit">Save</button>
+										</form>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- end of container -->
 
 
-<div th:replace="common/header :: body-bottom-scripts"/>
+	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
 </html>
