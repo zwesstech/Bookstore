@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class UserPayment {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -63,14 +63,6 @@ public class UserPayment {
 		this.cardNumber = cardNumber;
 	}
 
-	public String getHolderName() {
-		return holderName;
-	}
-
-	public void setHolderName(String holderName) {
-		this.holderName = holderName;
-	}
-
 	public int getExpiryMonth() {
 		return expiryMonth;
 	}
@@ -93,6 +85,14 @@ public class UserPayment {
 
 	public void setCvc(int cvc) {
 		this.cvc = cvc;
+	}
+
+	public String getHolderName() {
+		return holderName;
+	}
+
+	public void setHolderName(String holderName) {
+		this.holderName = holderName;
 	}
 
 	public boolean isDefaultPayment() {
@@ -119,5 +119,5 @@ public class UserPayment {
 		this.userBilling = userBilling;
 	}
 	
-
+	
 }
