@@ -5,11 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class UserBilling {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -21,7 +21,7 @@ public class UserBilling {
 	private String userBillingCountry;
 	private String userBillingZipcode;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	private UserPayment userPayment;
 
 	public Long getId() {
@@ -95,6 +95,6 @@ public class UserBilling {
 	public void setUserPayment(UserPayment userPayment) {
 		this.userPayment = userPayment;
 	}
-
+	
 	
 }
