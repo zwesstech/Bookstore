@@ -26,10 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bookstore.domain.BillingAddress;
 import com.bookstore.domain.Book;
-import com.bookstore.domain.Payment;
-import com.bookstore.domain.ShippingAddress;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.domain.UserPayment;
@@ -150,7 +147,7 @@ public class HomeController {
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 
-		ShippingAddress userShipping = new ShippingAddress();
+		UserShipping userShipping = new UserShipping();
 		model.addAttribute("userShipping", userShipping);
 
 		model.addAttribute("listOfCreditCards", true);
@@ -201,8 +198,8 @@ public class HomeController {
 		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfShippingAddresses", true);
 
-		BillingAddress userBilling = new BillingAddress();
-		Payment userPayment = new Payment();
+		UserBilling userBilling = new UserBilling();
+		UserPayment userPayment = new UserPayment();
 
 		model.addAttribute("userBilling", userBilling);
 		model.addAttribute("userPayment", userPayment);
@@ -225,7 +222,7 @@ public class HomeController {
 		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfCreditCards", true);
 
-		ShippingAddress userShipping = new ShippingAddress();
+		UserShipping userShipping = new UserShipping();
 
 		model.addAttribute("userShipping", userShipping);
 
@@ -238,40 +235,35 @@ public class HomeController {
 		return "myProfile";
 	}
 
-	@RequestMapping(value="/addNewCreditCard", method=RequestMethod.POST)
-	public String addNewCreditCard(
-			@ModelAttribute("userPayment") UserPayment userPayment,
-			@ModelAttribute("userBilling") UserBilling userBilling,
-			Principal principal, Model model
-			){
+	@RequestMapping(value = "/addNewCreditCard", method = RequestMethod.POST)
+	public String addNewCreditCard(@ModelAttribute("userPayment") UserPayment userPayment,
+			@ModelAttribute("userBilling") UserBilling userBilling, Principal principal, Model model) {
 		User user = userService.findByUsername(principal.getName());
 		userService.updateUserBilling(userBilling, userPayment, user);
-		
+
 		model.addAttribute("user", user);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("classActiveBilling", true);
 		model.addAttribute("listOfShippingAddresses", true);
-		
+
 		return "myProfile";
 	}
 
-	@RequestMapping(value="/addNewShippingAddress", method=RequestMethod.POST)
-	public String addNewShippingAddressPost(
-			@ModelAttribute("userShipping") UserShipping userShipping,
-			Principal principal, Model model
-			){
+	@RequestMapping(value = "/addNewShippingAddress", method = RequestMethod.POST)
+	public String addNewShippingAddressPost(@ModelAttribute("userShipping") UserShipping userShipping,
+			Principal principal, Model model) {
 		User user = userService.findByUsername(principal.getName());
 		userService.updateUserShipping(userShipping, user);
-		
+
 		model.addAttribute("user", user);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		model.addAttribute("listOfShippingAddresses", true);
 		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfCreditCards", true);
-		
+
 		return "myProfile";
 	}
 
