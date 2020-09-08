@@ -18,7 +18,7 @@ import com.bookstore.service.UserService;
 @Controller
 @RequestMapping("/shoppingCart")
 public class ShoppingCartController {
-
+	
 	@Autowired
 	private UserService userService;
 	
@@ -35,11 +35,12 @@ public class ShoppingCartController {
 		
 		List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
 		
-		shoppingCartService.upadateShoppingCart(shoppingCart);
+		shoppingCartService.updateShoppingCart(shoppingCart);
 		
 		model.addAttribute("cartItemList", cartItemList);
 		model.addAttribute("shoppingCart", shoppingCart);
 		
 		return "shoppingCart";
 	}
+
 }

@@ -17,10 +17,10 @@ public class CartItemServiceImpl implements CartItemService{
 	@Autowired
 	private CartItemRepository cartItemRepository;
 	
-	public List<CartItem> findByShoppingCart(ShoppingCart shoppingCart){
+	public List<CartItem> findByShoppingCart(ShoppingCart shoppingCart) {
 		return cartItemRepository.findByShoppingCart(shoppingCart);
 	}
-
+	
 	public CartItem updateCartItem(CartItem cartItem) {
 		BigDecimal bigDecimal = new BigDecimal(cartItem.getBook().getOurPrice()).multiply(new BigDecimal(cartItem.getQty()));
 		
@@ -31,4 +31,5 @@ public class CartItemServiceImpl implements CartItemService{
 		
 		return cartItem;
 	}
+
 }

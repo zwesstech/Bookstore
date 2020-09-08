@@ -15,15 +15,16 @@ import com.bookstore.service.UserService;
 import com.bookstore.utility.SecurityUtility;
 
 @SpringBootApplication
-public class BookstoreApplication implements CommandLineRunner{
-	
+public class BookstoreApplication implements CommandLineRunner {
+
 	@Autowired
 	private UserService userService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
+
 	}
-	
+
 	@Override
 	public void run(String... args) throws Exception {
 		User user1 = new User();
@@ -34,11 +35,13 @@ public class BookstoreApplication implements CommandLineRunner{
 		user1.setEmail("davidndlovu136@gmail.com");
 		Set<UserRole> userRoles = new HashSet<>();
 		Role role1 = new Role();
-		role1.setRoleId(1);
+		role1.setRoleId(0);
 		role1.setName("ROLE_USER");
 		userRoles.add(new UserRole(user1, role1));
-		
+
 		userService.createUser(user1, userRoles);
+		
+
 	}
 
 }

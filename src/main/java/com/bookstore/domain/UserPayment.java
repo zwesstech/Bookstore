@@ -18,10 +18,10 @@ public class UserPayment {
 	private String type;
 	private String cardName;
 	private String cardNumber;
+	private String holderName;
 	private int expiryMonth;
 	private int expiryYear;
 	private int cvc;
-	private String holderName;
 	private boolean defaultPayment;
 	
 	@ManyToOne

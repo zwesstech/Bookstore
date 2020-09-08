@@ -7,8 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.bookstore.domain.CartItem;
 import com.bookstore.domain.ShoppingCart;
 
-public interface CartItemRepository extends CrudRepository<CartItem, Long> {
-	
+public interface CartItemRepository extends CrudRepository<CartItem, Long>{
 	List<CartItem> findByShoppingCart(ShoppingCart shoppingCart);
-
 }

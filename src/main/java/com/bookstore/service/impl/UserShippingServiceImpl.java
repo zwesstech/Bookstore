@@ -19,7 +19,7 @@ public class UserShippingServiceImpl implements UserShippingService{
 	}
 	
 	public void removeById(Long id) {
-		userShippingRepository.deleteById(id);
+		 userShippingRepository.deleteById(id);
 	}
 
 }

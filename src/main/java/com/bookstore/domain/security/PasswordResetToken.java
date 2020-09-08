@@ -19,7 +19,7 @@ public class PasswordResetToken {
 	private static final int EXPIRATION = 60 * 24;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	private String token;
@@ -30,17 +30,17 @@ public class PasswordResetToken {
 	
 	private Date expiryDate;
 	
-	public PasswordResetToken(){}
+	public PasswordResetToken() {}
 	
 	public PasswordResetToken(final String token, final User user) {
-		super ();
+		super();
 		
 		this.token = token;
 		this.user = user;
 		this.expiryDate = calculateExpiryDate(EXPIRATION);
 	}
 	
-	private Date calculateExpiryDate (final int expiryTimeInMinutes) {
+	private Date calculateExpiryDate(final int expiryTimeInMinutes) {
 		final Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(new Date().getTime());
 		cal.add(Calendar.MINUTE, expiryTimeInMinutes);
@@ -93,6 +93,5 @@ public class PasswordResetToken {
 		return "PasswordResetToken [id=" + id + ", token=" + token + ", user=" + user + ", expiryDate=" + expiryDate
 				+ "]";
 	}
-	
 	
 }

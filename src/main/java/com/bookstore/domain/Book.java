@@ -26,13 +26,13 @@ public class Book {
 	private String publicationDate;
 	private String language;
 	private String category;
-	private int numberOfPages;
 	private String format;
+	private int numberOfPages;
 	private int isbn;
 	private double shippingWeight;
 	private double listPrice;
 	private double ourPrice;
-	private boolean active=true;
+	private boolean active = true;
 	
 	@Column(columnDefinition="text")
 	private String description;
@@ -40,7 +40,6 @@ public class Book {
 	
 	@Transient
 	private MultipartFile bookImage;
-	
 	
 	@OneToMany(mappedBy = "book")
 	@JsonIgnore
@@ -102,20 +101,20 @@ public class Book {
 		this.category = category;
 	}
 
-	public int getNumberOfPages() {
-		return numberOfPages;
-	}
-
-	public void setNumberOfPages(int numberOfPages) {
-		this.numberOfPages = numberOfPages;
-	}
-
 	public String getFormat() {
 		return format;
 	}
 
 	public void setFormat(String format) {
 		this.format = format;
+	}
+
+	public int getNumberOfPages() {
+		return numberOfPages;
+	}
+
+	public void setNumberOfPages(int numberOfPages) {
+		this.numberOfPages = numberOfPages;
 	}
 
 	public int getIsbn() {
@@ -181,14 +180,5 @@ public class Book {
 	public void setBookImage(MultipartFile bookImage) {
 		this.bookImage = bookImage;
 	}
-
-	public List<BookToCartItem> getBookToCartItemList() {
-		return bookToCartItemList;
-	}
-
-	public void setBookToCartItemList(List<BookToCartItem> bookToCartItemList) {
-		this.bookToCartItemList = bookToCartItemList;
-	}
-	
 	
 }
