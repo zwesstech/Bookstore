@@ -67,7 +67,7 @@ public class ShoppingCartController {
 		CartItem cartItem = cartItemService.addBookToCartItem(book, user, Integer.parseInt(qty));
 		model.addAttribute("addBookSuccess", true);
 		
-		return "forward:/bookDeatail?id="+book.getId();
+		return "forward:/bookDetail?id="+book.getId();
 	}
 
 }
