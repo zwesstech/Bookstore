@@ -144,8 +144,6 @@ public class CheckoutController {
 
 			List<CartItem> cartItemList = cartItemService.findByShoppingCart(user.getShoppingCart());
 
-			BillingAddress billingAddress = new BillingAddress();
-
 			model.addAttribute("shippingAddress", shippingAddress);
 			model.addAttribute("payment", payment);
 			model.addAttribute("billingAddress", billingAddress);
