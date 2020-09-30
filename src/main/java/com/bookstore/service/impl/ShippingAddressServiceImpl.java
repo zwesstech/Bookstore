@@ -1,9 +1,12 @@
 package com.bookstore.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.bookstore.domain.ShippingAddress;
 import com.bookstore.domain.UserShipping;
 import com.bookstore.service.ShippingAddressService;
 
+@Service
 public class ShippingAddressServiceImpl implements ShippingAddressService {
 	public ShippingAddress setByUserShipping(UserShipping userShipping, ShippingAddress shippingAddress) {
 		shippingAddress.setShippingAddressName(userShipping.getUserShippingName());
