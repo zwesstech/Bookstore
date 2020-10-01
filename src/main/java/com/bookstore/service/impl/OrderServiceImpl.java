@@ -27,7 +27,6 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private CartItemService cartItemService; 
 
-	@Autowired
 	public synchronized Order createOrder(ShoppingCart shoppingCart,
 			ShippingAddress shippingAddress,
 			BillingAddress billingAddress,
