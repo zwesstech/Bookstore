@@ -25,6 +25,7 @@ import com.bookstore.domain.User;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.domain.UserPayment;
 import com.bookstore.domain.UserShipping;
+import com.bookstore.repository.OrderService;
 import com.bookstore.service.BillingAddressService;
 import com.bookstore.service.CartItemService;
 import com.bookstore.service.PaymentService;
@@ -68,6 +69,9 @@ public class CheckoutController {
 	
 	@Autowired
 	private ShoppingCartService shoppingCartService;
+	
+	@Autowired
+	private OrderService orderService;
 
 	@RequestMapping("/checkout")
 	public String checkout(@RequestParam("id") Long cartId,
